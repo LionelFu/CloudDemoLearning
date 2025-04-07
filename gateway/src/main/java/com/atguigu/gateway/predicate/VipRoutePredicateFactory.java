@@ -28,16 +28,19 @@ public class VipRoutePredicateFactory extends AbstractRoutePredicateFactory<VipR
         return new GatewayPredicate() {
             @Override
             public boolean test(ServerWebExchange serverWebExchange) {
+                // 断言规则
                 // localhost/search?q=haha&user=leifengyang
                 ServerHttpRequest request = serverWebExchange.getRequest();
 
-                String first = request.getQueryParams().getFirst(config.param);
+                String first = request.getQueryParams().getFirst(config.param);     // 获取请求参数
 
+                // 有值并且返回指定value
                 return StringUtils.hasText(first) && first.equals(config.value);
             }
         };
     }
 
+    // 短写法属性参数
     @Override
     public List<String> shortcutFieldOrder() {
         return Arrays.asList("param", "value");

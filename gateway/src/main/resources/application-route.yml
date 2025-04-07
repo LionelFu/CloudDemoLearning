@@ -10,17 +10,18 @@ spring:
 
       routes:
         - id: bing-route
-          uri: https://cn.bing.com/
+          uri: https://cn.bing.com/ # 微服务可以采用lb，也可以选择直接地址
           predicates:
+            # 全写法
             - name: Path
               args:
                 patterns: /search
-            - name: Query
+            - name: Query     # Query断言，必须要匹配对应的参数和值才能响应请求
               args:
                 param: q
                 regexp: haha
 #            - Vip=user,leifengyang
-            - name: Vip
+            - name: Vip     # 自定义断言工厂
               args:
                 param: user
                 value: leifengyang
@@ -32,8 +33,8 @@ spring:
           predicates:
             - name: Path  # 断言名
               args:
-                patterns: /api/order/**
-                matchTrailingSlash: true
+                patterns: /api/order/**   # 请求路由的模式
+                matchTrailingSlash: true    # 匹配斜线
           filters:
             - RewritePath=/api/order/?(?<segment>.*), /$\{segment}
             - OnceToken=X-Response-Token, jwt

@@ -9,4 +9,4 @@ spring:
 
 # localhost/api/order
 server:   # 网关端口
-  port: 80
+  port: 90
