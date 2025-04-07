@@ -27,10 +27,10 @@ spring:
           order: 10
           metadata:
             hello: world
-        - id: order-route
-          uri: lb://service-order
+        - id: order-route   # 路由名称
+          uri: lb://service-order   # 负载均衡地址
           predicates:
-            - name: Path
+            - name: Path  # 断言名
               args:
                 patterns: /api/order/**
                 matchTrailingSlash: true
