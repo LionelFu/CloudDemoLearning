@@ -24,6 +24,7 @@ public class MyBlockExceptionHandler implements BlockExceptionHandler {
 
         R error = R.error(500, resourceName + " 被Sentinel限制了，原因：" + e.getClass());
 
+        // 写为json
         String json = objectMapper.writeValueAsString(error);
         writer.write(json);
 

@@ -15,7 +15,7 @@ spring:
       transport:
         dashboard: localhost:8080
       eager: true
-      web-context-unify: false
+      web-context-unify: false    # 是否统一上下文（是否分割请求链路）
 #            request-interceptors:
 #              - com.atguigu.order.interceptor.XTokenRequestInterceptor
 #            retryer: feign.retryer.Default

@@ -37,8 +37,9 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     ProductFeignClient productFeignClient;
 
-
+    // createOrderFallback为异常兜底回调函数，要么得到真是数据，要么得到兜底回调数据
     @SentinelResource(value = "createOrder",blockHandler = "createOrderFallback")
+//    @SentinelResource(value = "createOrder")
     @Override
     public Order createOrder(Long productId, Long userId) {
 //        Product product = getProductFromRemoteWithLoadBalanceAnnotation(productId);
